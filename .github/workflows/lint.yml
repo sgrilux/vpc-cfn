@@ -24,8 +24,12 @@ jobs:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
 
-    - name: cfn-lint-action
-      uses: ScottBrenner/cfn-lint-action@1.5.0
+    - name: Stelligent cfn_nag
+      uses: stelligent/cfn_nag@v0.5.48
+      with:
+        # Where cfn_nag_scan should scan for violations (default: $GITHUB_WORKSPACE).
+        input_path: cloudformation/
+        # extra_args: # optional, default is --print-suppression
 
     # Runs a set of commands using the runners shell
     # - name: validate-template
